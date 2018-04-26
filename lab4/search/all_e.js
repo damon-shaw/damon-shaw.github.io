@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['s1',['s1',['../struct_gtap.html#a7832cc7704edc7b29f1832598c9656fd',1,'Gtap']]],
+  ['s1bouncedelay',['S1bouncedelay',['../button_8c.html#abde4f2f5e0cae8ce110dbb22b1112742',1,'button.c']]],
+  ['s2',['s2',['../struct_gtap.html#a93b9fac656ce3a913536a77afb35cbfd',1,'Gtap']]],
+  ['s2bouncedelay',['S2bouncedelay',['../button_8c.html#ac24dcb9d3fe5c0f86da50e3df01f81c1',1,'button.c']]],
+  ['samecol',['SameCol',['../maplogic_8c.html#a0a6e6233038542a323f95d4e6f1ea0c1',1,'maplogic.c']]],
+  ['samediag',['SameDiag',['../maplogic_8c.html#ad8ea73f96c953db2279f143be7134409',1,'maplogic.c']]],
+  ['samediagback',['SameDiagBack',['../maplogic_8c.html#aef5bd80c67ade08778c186e6a02c76fb',1,'maplogic.c']]],
+  ['samerow',['SameRow',['../maplogic_8c.html#a8e5179b4ae7c4bbfaf61465607bb1f93',1,'maplogic.c']]],
+  ['samplegoertzel',['SampleGoertzel',['../goertzel_8c.html#ae0d67a20e57595aa91200a604b0d08c2',1,'SampleGoertzel(Gtap *t, unsigned x):&#160;goertzel.c'],['../goertzel_8h.html#ae0d67a20e57595aa91200a604b0d08c2',1,'SampleGoertzel(Gtap *t, unsigned x):&#160;goertzel.c']]],
+  ['scaler_5fshift',['SCALER_SHIFT',['../display_8c.html#a2e950bf3c6bb4b31ba3b1ec3930d2ce8',1,'display.c']]],
+  ['scalesample',['ScaleSample',['../goertzel_8c.html#af08f0185a0e5e09179654683c6d2be72',1,'ScaleSample(unsigned s):&#160;goertzel.c'],['../goertzel_8h.html#af08f0185a0e5e09179654683c6d2be72',1,'ScaleSample(unsigned s):&#160;goertzel.c']]],
+  ['scores',['scores',['../display_8c.html#a05f7ea98120acc30b65d54fc12a3e2b4a451d4ff4d87f367c956bf078376d27c4',1,'display.c']]],
+  ['sound_2ec',['sound.c',['../sound_8c.html',1,'']]],
+  ['sound_2eh',['sound.h',['../sound_8h.html',1,'']]],
+  ['startswtimer',['StartSWTimer',['../swtimer_8c.html#a54cceeb1464a210b1c367c8f3f437f6c',1,'StartSWTimer(tSWTimer *T):&#160;swtimer.c'],['../swtimer_8h.html#a54cceeb1464a210b1c367c8f3f437f6c',1,'StartSWTimer(tSWTimer *T):&#160;swtimer.c']]],
+  ['state_5ft',['state_t',['../maingame_8c.html#aa0aafed44fec19806d8f9ad834be1248',1,'maingame.c']]],
+  ['swtimer_2ec',['swtimer.c',['../swtimer_8c.html',1,'']]],
+  ['swtimer_2eh',['swtimer.h',['../swtimer_8h.html',1,'']]],
+  ['swtimerexpired',['SWTimerExpired',['../swtimer_8c.html#a94163ddd54546c0051795e3ac464e5f3',1,'SWTimerExpired(tSWTimer *T):&#160;swtimer.c'],['../swtimer_8h.html#a94163ddd54546c0051795e3ac464e5f3',1,'SWTimerExpired(tSWTimer *T):&#160;swtimer.c']]],
+  ['swtimeroneshotexpired',['SWTimerOneShotExpired',['../swtimer_8c.html#a8e911d80ded931576ec81b5cfd38379c',1,'SWTimerOneShotExpired(tSWTimer *T):&#160;swtimer.c'],['../swtimer_8h.html#a8e911d80ded931576ec81b5cfd38379c',1,'SWTimerOneShotExpired(tSWTimer *T):&#160;swtimer.c']]],
+  ['system_5fclocks_5f1ms',['SYSTEM_CLOCKS_1MS',['../sound_8c.html#a14e440959755a97740e7b043ab602dff',1,'sound.c']]],
+  ['systemclock',['SYSTEMCLOCK',['../hwtimer_8h.html#a1ecca0639736a4e4d3b5f5e1c096e07a',1,'hwtimer.h']]]
+];

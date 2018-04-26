@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['display_2ec',['display.c',['../display_8c.html',1,'']]],
+  ['display_2eh',['display.h',['../display_8h.html',1,'']]],
+  ['drawboard',['DrawBoard',['../display_8c.html#af3c974589fdde58478c74493d6f803a1',1,'DrawBoard(tcellstate map[9]):&#160;display.c'],['../display_8h.html#af3c974589fdde58478c74493d6f803a1',1,'DrawBoard(tcellstate map[9]):&#160;display.c']]],
+  ['drawmessage',['DrawMessage',['../display_8c.html#aad9b682a4d7c985c4c14b59277c2fd36',1,'DrawMessage(char *s, uint32_t color):&#160;display.c'],['../display_8h.html#aad9b682a4d7c985c4c14b59277c2fd36',1,'DrawMessage(char *s, uint32_t color):&#160;display.c']]],
+  ['drawnextidlemessage',['DrawNextIdleMessage',['../display_8c.html#aeb1f36b91bf4d24948f64b7aa1e07046',1,'DrawNextIdleMessage(int computerscore, int humanscore):&#160;display.c'],['../display_8h.html#aeb1f36b91bf4d24948f64b7aa1e07046',1,'DrawNextIdleMessage(int computerscore, int humanscore):&#160;display.c']]],
+  ['drawscaledline',['DrawScaledLine',['../display_8c.html#a2f603b6ee1ea93aacc20efd7d6e3793c',1,'DrawScaledLine(int position, unsigned power, unsigned maximum):&#160;display.c'],['../display_8h.html#a2f603b6ee1ea93aacc20efd7d6e3793c',1,'DrawScaledLine(int position, unsigned power, unsigned maximum):&#160;display.c']]],
+  ['drawscore',['DrawScore',['../display_8c.html#a43180c341ec35d95439569ff0421e6e0',1,'DrawScore(int computerscore, int humanscore, uint32_t color):&#160;display.c'],['../display_8h.html#a43180c341ec35d95439569ff0421e6e0',1,'DrawScore(int computerscore, int humanscore, uint32_t color):&#160;display.c']]],
+  ['drawtime',['DrawTime',['../display_8c.html#ae3d40934a3b484ff7e8e5f2bf6425215',1,'DrawTime(unsigned minutes, unsigned seconds):&#160;display.c'],['../display_8h.html#ae3d40934a3b484ff7e8e5f2bf6425215',1,'DrawTime(unsigned minutes, unsigned seconds):&#160;display.c']]],
+  ['drawwinner',['DrawWinner',['../display_8c.html#a6f769a22dd9c28ba7eb5ecfe35dcd699',1,'DrawWinner(tcellstate map[9], int winner, uint32_t color):&#160;display.c'],['../display_8h.html#a6f769a22dd9c28ba7eb5ecfe35dcd699',1,'DrawWinner(tcellstate map[9], int winner, uint32_t color):&#160;display.c']]],
+  ['dtmf_2ec',['dtmf.c',['../dtmf_8c.html',1,'']]],
+  ['dtmf_2eh',['dtmf.h',['../dtmf_8h.html',1,'']]],
+  ['dtmf_5fsignificant_5fpower',['DTMF_SIGNIFICANT_POWER',['../dtmf_8c.html#ac02a59f5071c76c55902be7b3ddbee28',1,'dtmf.c']]],
+  ['dtmfaddsample',['DTMFAddSample',['../dtmf_8c.html#afc35bcb3b755de0c399f8270ec12efc6',1,'DTMFAddSample(unsigned x):&#160;dtmf.c'],['../dtmf_8h.html#afc35bcb3b755de0c399f8270ec12efc6',1,'DTMFAddSample(unsigned x):&#160;dtmf.c']]],
+  ['dtmfdisplay',['DTMFDisplay',['../dtmf_8c.html#a30e6162999e267826c17169dead6bece',1,'DTMFDisplay():&#160;dtmf.c'],['../dtmf_8h.html#a30e6162999e267826c17169dead6bece',1,'DTMFDisplay():&#160;dtmf.c']]],
+  ['dtmfdisplaypower',['DTMFDisplayPower',['../dtmf_8c.html#a80a6f366b879103347eb1a0f7dc9e412',1,'DTMFDisplayPower():&#160;dtmf.c'],['../dtmf_8h.html#a80a6f366b879103347eb1a0f7dc9e412',1,'DTMFDisplayPower():&#160;dtmf.c']]],
+  ['dtmffindsignificant',['DTMFFindSignificant',['../dtmf_8c.html#a3805d20211d10b09c8f8bdac739907e6',1,'DTMFFindSignificant(bool *sign_tones):&#160;dtmf.c'],['../dtmf_8h.html#a3805d20211d10b09c8f8bdac739907e6',1,'DTMFFindSignificant(bool *sign_tones):&#160;dtmf.c']]],
+  ['dtmfpower',['DTMFPower',['../dtmf_8h.html#a9cf38c09e86f5764558ac88b67ef0eda',1,'dtmf.h']]],
+  ['dtmfreset',['DTMFReset',['../dtmf_8c.html#aeb07fcb7c833f82b5c00a1eeb9f72f2e',1,'DTMFReset():&#160;dtmf.c'],['../dtmf_8h.html#aeb07fcb7c833f82b5c00a1eeb9f72f2e',1,'DTMFReset():&#160;dtmf.c']]],
+  ['dtmfsigdisp_5fbound',['DTMFSIGDISP_BOUND',['../display_8c.html#a898e6a206e5cfe615412f66ce1103998',1,'display.c']]],
+  ['dtmfsigdisp_5fnum_5fpositions',['DTMFSIGDISP_NUM_POSITIONS',['../display_8c.html#aa35e21d77f29459262d26c170c4504e3',1,'display.c']]],
+  ['dtmfsigdisp_5fregion_5fx_5fmax',['DTMFSIGDISP_REGION_X_MAX',['../display_8c.html#aa4a6cb1fb0896ba62bf2d140e2f2aacc',1,'display.c']]],
+  ['dtmfsigdisp_5fregion_5fx_5fmin',['DTMFSIGDISP_REGION_X_MIN',['../display_8c.html#a8d767ba80201f0807efb525960774e56',1,'display.c']]],
+  ['dtmfsigdisp_5fregion_5fy_5fmax',['DTMFSIGDISP_REGION_Y_MAX',['../display_8c.html#a4c1f19b58ba4a4c702d8942b31b32b57',1,'display.c']]],
+  ['dtmfsigdisp_5fregion_5fy_5fmin',['DTMFSIGDISP_REGION_Y_MIN',['../display_8c.html#a755c9b3ae406ca860902d02951350b3a',1,'display.c']]]
+];
