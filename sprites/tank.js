@@ -79,10 +79,18 @@ function TankSprite(xPos, yPos) {
     };
 
     this.move = function() {
-        this.x = 150 + 100*sin(0.02*this.motionAngle);
+        this.x = 350 + 300*sin(0.02*this.motionAngle);
 
         this.motionAngle += 1;
     };
 
+    this.getBounds = function() {
+        return {
+            xMin: this.x,
+            xMax: this.x + this.baseWidth,
+            yMin: this.y,
+            yMax: this.y + this.baseHeight
+        };
+    }
 
 }

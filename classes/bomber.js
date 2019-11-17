@@ -1,4 +1,4 @@
-function BomberSprite(yLine) {
+function Bomber(yLine) {
 
     this.position = createVector(-200, yLine);
     this.velocity = createVector(2, 0);

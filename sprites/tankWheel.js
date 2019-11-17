@@ -34,4 +34,13 @@ function TankWheelSprite(xPos, yPos) {
             yMax: this.y + this.wheelHeight
         }
     }
+
+    this.isInBounds = function(x, y) {
+        let myBounds = this.getBounds();
+        if(x >= myBounds.xMin && x <= myBounds.xMax)
+            if(y >= myBounds.yMin && y <= myBounds.yMax)
+                return true;
+
+        return false;
+    }
 }
