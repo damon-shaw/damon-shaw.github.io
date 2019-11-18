@@ -30,6 +30,13 @@ function preload() {
     BomberFrame4 = loadImage("../assets/bomber_4.png");
 
     ExplosionFrame0 = loadImage("../assets/explosion_0.png");
+    ExplosionFrame1 = loadImage("../assets/explosion_1.png");
+    ExplosionFrame2 = loadImage("../assets/explosion_2.png");
+    ExplosionFrame3 = loadImage("../assets/explosion_3.png");
+    ExplosionFrame4 = loadImage("../assets/explosion_4.png");
+    ExplosionFrame5 = loadImage("../assets/explosion_5.png");
+    ExplosionFrame6 = loadImage("../assets/explosion_6.png");
+    ExplosionFrame7 = loadImage("../assets/explosion_7.png");
 
     BomberShellBase = loadImage("../assets/bomber_shell.png");
 
@@ -70,7 +77,14 @@ function setup() {
     BomberFrame4.resizeNN(BomberFrame4.width * bomberScale, BomberFrame4.height * bomberScale);
     BomberShellBase.resizeNN(BomberShellBase.width * bomberScale, BomberShellBase.height * bomberScale);
 
-    ExplosionFrame0.resizeNN(ExplosionFrame0.width * 4, ExplosionFrame0.height * 4);
+    ExplosionFrame0.resizeNN(ExplosionFrame0.width * 2, ExplosionFrame0.height * 2);
+    ExplosionFrame1.resizeNN(ExplosionFrame1.width * 2, ExplosionFrame1.height * 2);
+    ExplosionFrame2.resizeNN(ExplosionFrame2.width * 2, ExplosionFrame2.height * 2);
+    ExplosionFrame3.resizeNN(ExplosionFrame3.width * 2, ExplosionFrame3.height * 2);
+    ExplosionFrame4.resizeNN(ExplosionFrame4.width * 2, ExplosionFrame4.height * 2);
+    ExplosionFrame5.resizeNN(ExplosionFrame5.width * 2, ExplosionFrame5.height * 2);
+    ExplosionFrame6.resizeNN(ExplosionFrame6.width * 2, ExplosionFrame6.height * 2);
+    ExplosionFrame7.resizeNN(ExplosionFrame7.width * 2, ExplosionFrame7.height * 2);
 
     preGameController = new PreGameObj();
     playGameController = new PlayGameControllerObj();
