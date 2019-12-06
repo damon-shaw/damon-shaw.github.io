@@ -1,6 +1,7 @@
 var COLORS = {
     skyBlue: "#badbdb",
     evilGrey: "#2b2b2b",
+    bloodRed: "#a10c02",
     translucentWhite: "#ebebebdd",
     highPeakGrey: "#79777E",
     oliveGreen: "#597d35",

@@ -78,6 +78,10 @@ function Player(xPos, yPos) {
         }
     };
 
+    this.isGrounded = function() {
+        return this.grounded;
+    }
+
     /**
      * Draws the tank sprite.
      */

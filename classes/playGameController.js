@@ -19,6 +19,8 @@ function PlayGameControllerObj() {
 
         this.explosions = [];
 
+        this.comboDisplay = new ComboDisplay();
+
         this.gameShop = new GameShop();
 
         this.mountains = [
@@ -34,6 +36,8 @@ function PlayGameControllerObj() {
 
     this.reset = function() {
         this.init();
+        textSize(20);
+        textFont(RhinoRocks);
     }
 
     this.drawGame = function() {
@@ -82,6 +86,8 @@ function PlayGameControllerObj() {
         this.explosions.forEach(explosion => {
             explosion.draw();
         });
+
+        this.comboDisplay.draw();
 
         if(this.player.position.y < 100) {
             pop();
@@ -137,7 +143,15 @@ function PlayGameControllerObj() {
         this.bombers.forEach((bomber, bIndex) => {
             if(Collider.areColliding(this.player, bomber)) {
                 console.log("Player is colliding with a Bomber.");
-                this.explosions.push(new ExplosionAnimation(bomber.position.x, bomber.position.y));
+                this.explosions.push(
+                    new ExplosionAnimation(
+                        (bomber.position.x + bomber.width / 2),
+                        (bomber.position.y + bomber.height / 2)
+                    )
+                );
+
+                this.comboDisplay.incrementCombo();
+
                 this.player.launch();
                 this.playRandomExplosion();
                 this.bombers.splice(bIndex, 1);
@@ -146,7 +160,12 @@ function PlayGameControllerObj() {
             bomber.shells.forEach((shell, index) => {
                 if(Collider.areColliding(this.player, shell)) {
                     console.log("Player is colliding with a shell!");
-                    this.explosions.push(new ExplosionAnimation(shell.position.x, shell.position.y));
+                    this.explosions.push(
+                        new ExplosionAnimation(
+                            (this.player.position.x + shell.position.x) / 2,
+                            (this.player.position.y + shell.position.y) / 2
+                        )
+                    );
                     bomber.shells.splice(index, 1);
                     this.player.launch();
                     this.playRandomExplosion();
@@ -170,6 +189,10 @@ function PlayGameControllerObj() {
             if(explosion.isDone())
                 this.explosions.splice(index, 1);
         });
+
+        if(this.player.isGrounded()) {
+            this.comboDisplay.resetCombo();
+        }
     }
 
     this.execute = function() {

@@ -4,6 +4,7 @@
   "description": "",
   "main": "liveserver.js",
   "scripts": {
+    "start": "node liveserver.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
