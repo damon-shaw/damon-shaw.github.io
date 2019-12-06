@@ -46,6 +46,11 @@ function PlayGameControllerObj() {
         if(this.player.position.y < 100) {
             push();
             translate(0, -this.player.position.y + 100);
+
+            this.comboDisplay.draw(this.player.position.y - 60);
+        }
+        else {
+            this.comboDisplay.draw(40);
         }
 
         // Draw the height meter.
@@ -63,8 +68,6 @@ function PlayGameControllerObj() {
         for(var i = 0; i >= -HEIGHT_METER_LENGTH; i = i - HEIGHT_METER_INTERVAL) {
             text((-i).toString(), 20, i+height-5);
         }
-
-        this.comboDisplay.draw();
 
         fill(COLORS.skyBlue);
 

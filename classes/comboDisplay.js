@@ -4,10 +4,13 @@ function ComboDisplay() {
     this.position = createVector(width - this.textSize * 10, 40);
     this.comboValue = 0;
 
-    this.draw = function() {
-        //fill(COLORS.bloodRed);
-        text(`${this.comboValue} COMBO`, width - this.textSize*10, 40);
-        //textFont(ShareTechMono);
+    this.draw = function(yPos) {
+        fill(COLORS.bloodRed);
+        text(
+            `${this.comboValue} COMBO`,
+            width - this.textSize * (`${this.comboValue}`.length + 6),
+            yPos
+        );
     }
 
     this.incrementCombo = function() {
