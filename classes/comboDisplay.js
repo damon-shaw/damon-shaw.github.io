@@ -8,7 +8,9 @@ function ComboDisplay() {
         fill(COLORS.bloodRed);
         text(
             `${this.comboValue} COMBO`,
-            width - this.textSize * (`${this.comboValue}`.length + 6),
+            width - (this.textSize * 
+                (`${this.comboValue}`.length + 6)) + 
+                ((this.comboValue / 8) * cos(frameCount * Math.PI)),
             yPos
         );
     }
