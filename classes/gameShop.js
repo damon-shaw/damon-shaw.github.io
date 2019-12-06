@@ -1,3 +1,3 @@
 function GameShop() {
-    this.createBomberProb = 0.01;
+    this.createBomberProb = 0.03;
 }
