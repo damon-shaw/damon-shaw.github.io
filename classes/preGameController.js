@@ -29,7 +29,7 @@ function PreGameObj() {
         ];
 
         this.explosions = [
-            new ExplosionAnimation(100, 100)
+            // new ExplosionAnimation(100, 100)
         ];
     };
 
