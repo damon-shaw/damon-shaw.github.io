@@ -36,8 +36,6 @@ function PlayGameControllerObj() {
 
     this.reset = function() {
         this.init();
-        textSize(20);
-        textFont(RhinoRocks);
     }
 
     this.drawGame = function() {
@@ -66,6 +64,8 @@ function PlayGameControllerObj() {
             text((-i).toString(), 20, i+height-5);
         }
 
+        this.comboDisplay.draw();
+
         fill(COLORS.skyBlue);
 
         // Draw the mountains.
@@ -86,8 +86,6 @@ function PlayGameControllerObj() {
         this.explosions.forEach(explosion => {
             explosion.draw();
         });
-
-        this.comboDisplay.draw();
 
         if(this.player.position.y < 100) {
             pop();

@@ -20,7 +20,7 @@ function preload() {
     soundFormats('mp3', 'ogg');
 
     ShareTechMono = loadFont('../assets/fonts/ShareTechMono-Regular.ttf');
-    RhinoRocks = loadFont("../assets/fonts/RhinoRocks.ttf");
+    // RhinoRocks = loadFont("../assets/fonts/RhinoRocks.ttf");
     
     TankSpriteBase = loadImage("../assets/tank_base_alpha.png");
     TankSpriteWheel = loadImage("../assets/tank_wheel.png");

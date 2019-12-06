@@ -6,7 +6,7 @@ function ComboDisplay() {
 
     this.draw = function() {
         //fill(COLORS.bloodRed);
-        text(`${this.comboValue} COMBO`, this.position.x, this.position.y);
+        text(`${this.comboValue} COMBO`, width - this.textSize*10, 40);
         //textFont(ShareTechMono);
     }
 
