@@ -18,6 +18,9 @@ let BomberFrame4;
 // Seeker Image Frames
 let SeekerFrame;
 
+// Fuel Can Image Frames
+let FuelCanFrame;
+
 // Sounds
 let DoubleKillSound;
 let QuadraKillSound;
@@ -29,11 +32,16 @@ let MonsterKillSound;
 let UltraKillSound;
 let HolyShitSound;
 let YeetSound;
+let MoneySpentSound;
 
 let gameState = "pregame";
 
 let preGameController;
 let playGameController;
+
+Number.prototype.toHexString = function() {
+    return ("0" + (Math.trunc(this)).toString(16)).slice(-2).toUpperCase();
+};
 
 function preload() {
     soundFormats('mp3', 'ogg');
@@ -62,6 +70,9 @@ function preload() {
     SeekerShellFrame2 = loadImage("../assets/seeker_shell_2.png");
     SeekerShellFrame3 = loadImage("../assets/seeker_shell_3.png");
 
+    // Fuel Can Frames
+    FuelCanFrame = loadImage("../assets/fuel_can.png");
+
     ExplosionFrame0 = loadImage("../assets/explosion_0.png");
     ExplosionFrame1 = loadImage("../assets/explosion_1.png");
     ExplosionFrame2 = loadImage("../assets/explosion_2.png");
@@ -86,6 +97,7 @@ function preload() {
     UltraKillSound = loadSound("../assets/sounds/ultraKill.wav");
     HolyShitSound = loadSound("../assets/sounds/holyShit.wav");
     YeetSound = loadSound("../assets/sounds/420yeet.wav");
+    MoneySpentSound = loadSound("../assets/sounds/chaChing.mp3");
 
     // Non `const` constant definitions.
     Collider = new ColliderTool();
@@ -122,6 +134,8 @@ function setup() {
     // Scale up the Seeker NPC's frames.
     let seekerScale = 2;
     SeekerFrame.resizeNN(SeekerFrame.width * seekerScale, SeekerFrame.height * seekerScale);
+
+    FuelCanFrame.resizeNN(FuelCanFrame.width * 0.8, FuelCanFrame.height * 0.8);
 
     ExplosionFrame0.resizeNN(ExplosionFrame0.width * 2, ExplosionFrame0.height * 2);
     ExplosionFrame1.resizeNN(ExplosionFrame1.width * 2, ExplosionFrame1.height * 2);

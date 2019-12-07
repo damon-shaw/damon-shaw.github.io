@@ -72,7 +72,9 @@ function ComboDisplay() {
         }
     };
 
-    this.draw = function(yPos) {
+    this.draw = function() {
+        let yPos = 40;
+        textFont(OceanRush);
         fill(COLORS.bloodRed);
         textSize(this.textSize);
         text(
@@ -85,24 +87,25 @@ function ComboDisplay() {
         );
 
         textSize(this.descriptorTextSize);
+        textFont(LadyRadical);
         for(let descriptor of Object.values(this.descriptors)) {
             if(this.comboValue < descriptor.count) break;
             if(descriptor.yOffset > 40) continue;
             
-            textFont(LadyRadical);
             text(
                 descriptor.label,
                 width - (0.8 * this.descriptorTextSize * descriptor.label.length),
                 yPos + descriptor.yOffset + 25
             );
             descriptor.yOffset += 0.5;
-            textFont(OceanRush);
+
 
             if(!descriptor.drawn) {
                 descriptor.sound.play();
                 descriptor.drawn = true;
             }
         }
+        textFont(ShareTechMono);
     }
 
     this.incrementCombo = function() {
@@ -115,6 +118,10 @@ function ComboDisplay() {
             this.descriptors[descriptor].drawn = false;
             this.descriptors[descriptor].yOffset = 0;
         });
+    }
+
+    this.getCombo = function() {
+        return this.comboValue;
     }
 
 

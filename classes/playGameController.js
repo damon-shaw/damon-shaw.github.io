@@ -11,6 +11,7 @@ function PlayGameControllerObj() {
         this.state = "play";
         this.inited = false;
         this.transitionToStart = false;
+        this.transitionToGameOver = false;
 
         // Create the player and NPC containers.
         this.player = new Player(200, 350);
@@ -18,8 +19,12 @@ function PlayGameControllerObj() {
         this.seekers = [];
 
         this.explosions = [];
+        this.gameOverExplosions = [];
 
         this.comboDisplay = new ComboDisplay();
+        this.fuelDisplay = new FuelDisplay();
+        this.moneyDisplay = new MoneyDisplay();
+        this.progressDisplay = new ProgressDisplay();
 
         this.gameShop = new GameShop();
 
@@ -43,17 +48,10 @@ function PlayGameControllerObj() {
         // Draw the backdrop.
         noStroke();
 
-        textFont(OceanRush);
         if(this.player.position.y < 100) {
             push();
             translate(0, -this.player.position.y + 100);
-
-            this.comboDisplay.draw(this.player.position.y - 60);
         }
-        else {
-            this.comboDisplay.draw(40);
-        }
-        textFont(ShareTechMono);
 
         // Draw the height meter.
         stroke(COLORS.fadedBlack);
@@ -101,6 +99,19 @@ function PlayGameControllerObj() {
         if(this.player.position.y < 100) {
             pop();
         }
+
+        this.comboDisplay.draw();
+        this.fuelDisplay.draw();
+        this.moneyDisplay.draw();
+        this.progressDisplay.draw();
+        
+    }
+
+    this.drawGameOver = function() {
+        // Draw all of the player explosions.
+        this.gameOverExplosions.forEach(explosion => {
+            explosion.draw();
+        });
     }
 
     this.draw = function() {
@@ -111,6 +122,10 @@ function PlayGameControllerObj() {
             break;
             case "shop":
                 this.drawShopScreen();
+            break;
+            case "lose":
+                this.drawGame();
+                this.drawGameOver();
             break;
         }
     }
@@ -171,6 +186,9 @@ function PlayGameControllerObj() {
                 );
 
                 this.comboDisplay.incrementCombo();
+                this.moneyDisplay.addMoney(
+                    VALUE_BOMBER * COMBO_MODIFIER(this.comboDisplay.getCombo())
+                );
 
                 this.player.launch();
                 this.playRandomExplosion();
@@ -207,6 +225,9 @@ function PlayGameControllerObj() {
                     )
                 );
                 this.comboDisplay.incrementCombo();
+                this.moneyDisplay.addMoney(
+                    VALUE_SEEKER * COMBO_MODIFIER(this.comboDisplay.getCombo())
+                );
                 this.player.launch();
                 this.playRandomExplosion();
                 seeker.position.x = width * 1.1;
@@ -267,6 +288,77 @@ function PlayGameControllerObj() {
         if(this.player.isGrounded()) {
             this.comboDisplay.resetCombo();
         }
+
+        /*
+         * Driving force actions
+         */
+        if(frameCount % 30 === 0)
+            this.fuelDisplay.deductFuel(1);
+
+        if(this.fuelDisplay.isFuelEmpty()) {
+            if(this.moneyDisplay.hasAtleast(this.fuelDisplay.getNextFillupCost())) {
+                this.moneyDisplay.deductMoney(this.fuelDisplay.getNextFillupCost());
+                this.fuelDisplay.fillFuel();
+                this.progressDisplay.incrementProgress();
+                MoneySpentSound.play();
+            }
+            else {
+                this.state = "lose";
+            }
+        }
+
+        if(keyIsDown(SPACE_KEY)) {
+            if(!this.spacePressed) {
+                this.spacePressed = true;
+                this.progressDisplay.incrementProgress();
+            }
+        }
+        else {
+            this.spacePressed = false;
+        }
+    }
+
+    this.executeGameOver = function() {
+        // Move all the NPCs, but don't allow them to drop new shells.
+        this.bombers.forEach(bomber => {
+            bomber.move();
+            bomber.shells.forEach(shell => shell.move());
+        });
+        this.seekers.forEach(seeker => {
+            seeker.move();
+            seeker.shells.forEach(shell => {
+                shell.move(
+                    this.player.position.x + (this.player.baseWidth / 2),
+                    this.player.position.y + (this.player.baseHeight / 2)
+                );
+            });
+        });
+
+        
+        // Spawn a new explosion animation on the player's current location.
+        if(frameCount % 8 === 0)
+            this.gameOverExplosions.push(
+                new ExplosionAnimation(
+                    this.player.position.x + random(0, this.player.baseWidth),
+                    this.player.position.y + random(0, this.player.baseHeight)
+                )
+            );
+
+        this.player.noInputMove();
+        this.player.position.x -= 2;
+
+        // Move all of the player explosions to the new player location.
+        // this.gameOverExplosions.forEach(explosion => {
+        //     explosion.position.x = this.player.position.x + random(0, this.player.baseWidth);
+        //     explosion.position.y = this.player.position.y + random(0, this.player.baseHeight);
+        // });
+
+        // Do not process player movement.
+        // Do not process collisions.
+
+        if(this.player.position.x < -this.player.baseWidth - 10) {
+            this.transitionToGameOver = true;
+        }
     }
 
     this.execute = function() {
@@ -276,6 +368,9 @@ function PlayGameControllerObj() {
             break;
             case "shop":
                 this.executeShop();
+            break;
+            case "lose":
+                this.executeGameOver();
             break;
         }
     }

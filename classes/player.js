@@ -70,7 +70,6 @@ function Player(xPos, yPos) {
             this.rotationRate = 0;
             if(abs(this.velocity.y) >= this.gravityVector.y) {
                 this.velocity.y = -0.5*this.velocity.y;
-                console.log(this.motionAngle);
                 this.motionAngle = 0.7*this.motionAngle;
             }
             else {
@@ -90,6 +89,40 @@ function Player(xPos, yPos) {
             this.velocity.x = 0;
         }
     };
+
+    this.noInputMove = function() {
+        this.acceleration.set(0, 0);
+        this.velocity.set(0, this.velocity.y);
+
+        if(this.position.y < MAX_PLAYER_Y_POS)
+            this.grounded = false;
+        
+        this.acceleration.limit(1, 5);
+
+        this.velocity.add(this.acceleration);
+        if(!this.grounded)
+            this.velocity.add(this.gravityVector);
+
+        this.position.add(this.velocity);
+        this.motionAngle += this.rotationRate;
+
+        if(abs(this.motionAngle) > 2*Math.PI)
+            this.motionAngle -= Math.sign(this.motionAngle) * 2*Math.PI;
+
+        if(this.position.y > MAX_PLAYER_Y_POS) {
+            this.position.y = MAX_PLAYER_Y_POS;
+            this.rotationRate = 0;
+            if(abs(this.velocity.y) >= this.gravityVector.y) {
+                this.velocity.y = -0.5*this.velocity.y;
+                this.motionAngle = 0.7*this.motionAngle;
+            }
+            else {
+                this.velocity.y = 0;
+                this.motionAngle = 0;
+                this.grounded = true;
+            }
+        }
+    }
 
     this.isGrounded = function() {
         return this.grounded;
