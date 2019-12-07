@@ -235,6 +235,17 @@ function Player(xPos, yPos) {
         };
     }
 
+    /**
+     * Returns the midpoint of the player character,
+     * based on their current location.
+     */
+    this.getMidpoint = function() {
+        return createVector(
+            this.position.x + (this.baseWidth / 2),
+            this.position.y + (this.baseHeight / 2)
+        );
+    }
+
     this.launch = function() {
         this.launched = true;
         this.rotationRate = random(-0.25, 0.25);

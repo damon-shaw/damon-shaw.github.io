@@ -8,7 +8,7 @@ function Seeker(yLine) {
 
     this.shells = [];
 
-    this.dropShellProb = 0.005;
+    this.dropShellProb = 0.003;
 
     /**
      * Draws the tank sprite.

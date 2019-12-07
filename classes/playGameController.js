@@ -135,10 +135,8 @@ function PlayGameControllerObj() {
             seeker.execute();
             seeker.shells.forEach(shell => {
                 shell.move(
-                    createVector(
-                        this.player.position.x + (this.player.baseWidth / 2),
-                        this.player.position.y + (this.player.baseHeight / 2)
-                    )
+                    this.player.position.x + (this.player.baseWidth / 2),
+                    this.player.position.y + (this.player.baseHeight / 2)
                 );
             });
         });
@@ -209,7 +207,7 @@ function PlayGameControllerObj() {
                     )
                 );
                 this.comboDisplay.incrementCombo();
-                // this.player.launch();
+                this.player.launch();
                 this.playRandomExplosion();
                 seeker.position.x = width * 1.1;
             }
@@ -219,12 +217,12 @@ function PlayGameControllerObj() {
                     console.log("Player is colliding with a seeker shell!");
                     this.explosions.push(
                         new ExplosionAnimation(
-                            (this.player.position.x + shell.position.x) / 2,
-                            (this.player.position.y + shell.position.y) / 2
+                            (this.player.getMidpoint().x + shell.getMidpoint().x) / 2,
+                            (this.player.getMidpoint().y + shell.getMidpoint().y) / 2
                         )
                     );
                     seeker.shells.splice(index, 1);
-                    //this.player.launch();
+                    this.player.launch();
                     this.playRandomExplosion();
                 }
             });
@@ -255,7 +253,7 @@ function PlayGameControllerObj() {
         let createSeeker = random();
         if(createSeeker < this.gameShop.createSeekerProb) {
             console.log("Creating a new seeker!");
-            this.seekers.push(new Seeker(random(-200, 200)));
+            this.seekers.push(new Seeker(random(-500, -300)));
         }
 
         /*
