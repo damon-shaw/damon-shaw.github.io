@@ -10,6 +10,10 @@ const PLAYER_VEL_ROT_RATIO = 0.008;
 // Bomber Shell Constants
 const BOMBER_SHELL_VELOCITY_RETENTION = 0.93;
 
+// Seeker Shell Constants
+const SEEKER_SHELL_FTL = 300; // frames to live
+const SEEKER_SHELL_STEP_SIZE = 4;
+
 // Key code constants
 const A_KEY = 65;
 const D_KEY = 68;

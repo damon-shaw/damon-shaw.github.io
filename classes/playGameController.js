@@ -15,7 +15,7 @@ function PlayGameControllerObj() {
         // Create the player and NPC containers.
         this.player = new Player(200, 350);
         this.bombers = [];
-        this.sweepers = [];
+        this.seekers = [];
 
         this.explosions = [];
 
@@ -87,6 +87,12 @@ function PlayGameControllerObj() {
             bomber.shells.forEach(shell => shell.draw());
         });
 
+        // Draw all of the Seeker NPCs and their shells.
+        this.seekers.forEach(seeker => {
+            seeker.draw();
+            seeker.shells.forEach(shell => shell.draw());
+        });
+
         // Draw all of the explosions.
         this.explosions.forEach(explosion => {
             explosion.draw();
@@ -123,6 +129,19 @@ function PlayGameControllerObj() {
             bomber.execute();
             bomber.shells.forEach(shell => shell.move());
         });
+
+        this.seekers.forEach(seeker => {
+            seeker.move();
+            seeker.execute();
+            seeker.shells.forEach(shell => {
+                shell.move(
+                    createVector(
+                        this.player.position.x + (this.player.baseWidth / 2),
+                        this.player.position.y + (this.player.baseHeight / 2)
+                    )
+                );
+            });
+        });
         ///////////////////////////////////////////////
 
         /*
@@ -134,11 +153,11 @@ function PlayGameControllerObj() {
             if(bomber.isOutOfFrame())
                 this.bombers.splice(index, 1);
         });
-        // Check if any of the Sweepers are out of frame.
+        // Check if any of the Seekers are out of frame.
         // If so, remove it.
-        this.sweepers.forEach((sweeper, index) => {
-            if(sweeper.isOutOfFrame())
-                this.sweepers.splice(index, 1);
+        this.seekers.forEach((seeker, index) => {
+            if(seeker.isOutOfFrame() && seeker.hasNoShells())
+                this.seekers.splice(index, 1);
         });
         
         // Check if any of the Bomber NPCs, or their shells, are colliding with
@@ -176,6 +195,54 @@ function PlayGameControllerObj() {
             });
         });
 
+        // Check if any of the Seeker NPCs, or their shells, are colliding with
+        // the player.
+        // Check if any of the Seeker NPC shells have reached their end of life.
+        this.seekers.forEach((seeker) => {
+
+            if(Collider.areColliding(this.player, seeker)) {
+                console.log("Player is colliding with a seeker.");
+                this.explosions.push(
+                    new ExplosionAnimation(
+                        (seeker.position.x + seeker.width / 2),
+                        (seeker.position.y + seeker.height / 2)
+                    )
+                );
+                this.comboDisplay.incrementCombo();
+                // this.player.launch();
+                this.playRandomExplosion();
+                seeker.position.x = width * 1.1;
+            }
+
+            seeker.shells.forEach((shell, index) => {
+                if(Collider.areColliding(this.player, shell)) {
+                    console.log("Player is colliding with a seeker shell!");
+                    this.explosions.push(
+                        new ExplosionAnimation(
+                            (this.player.position.x + shell.position.x) / 2,
+                            (this.player.position.y + shell.position.y) / 2
+                        )
+                    );
+                    seeker.shells.splice(index, 1);
+                    //this.player.launch();
+                    this.playRandomExplosion();
+                }
+            });
+
+
+            seeker.shells.forEach((shell, index) => {
+                if(shell.isDone()) {
+                    this.explosions.push(
+                        new ExplosionAnimation(
+                            shell.position.x,
+                            shell.position.y
+                        )
+                    );
+                    seeker.shells.splice(index, 1);
+                }
+            });
+        });
+
         /*
          * NPC GENERATION
          */
@@ -183,6 +250,12 @@ function PlayGameControllerObj() {
         if(createBomber < this.gameShop.createBomberProb) {
             console.log("Creating a new bomber!");
             this.bombers.push(new Bomber(random(-200, 200)));
+        }
+
+        let createSeeker = random();
+        if(createSeeker < this.gameShop.createSeekerProb) {
+            console.log("Creating a new seeker!");
+            this.seekers.push(new Seeker(random(-200, 200)));
         }
 
         /*

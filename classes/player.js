@@ -58,16 +58,25 @@ function Player(xPos, yPos) {
         this.velocity.add(this.acceleration);
         if(!this.grounded)
             this.velocity.add(this.gravityVector);
+
         this.position.add(this.velocity);
         this.motionAngle += this.rotationRate;
 
+        if(abs(this.motionAngle) > 2*Math.PI)
+            this.motionAngle -= Math.sign(this.motionAngle) * 2*Math.PI;
+
         if(this.position.y > MAX_PLAYER_Y_POS) {
             this.position.y = MAX_PLAYER_Y_POS;
-            this.grounded = true;
             this.rotationRate = 0;
-            if(this.velocity.y > 0) {
+            if(abs(this.velocity.y) >= this.gravityVector.y) {
                 this.velocity.y = -0.5*this.velocity.y;
+                console.log(this.motionAngle);
                 this.motionAngle = 0.7*this.motionAngle;
+            }
+            else {
+                this.velocity.y = 0;
+                this.motionAngle = 0;
+                this.grounded = true;
             }
         }
 
@@ -95,72 +104,121 @@ function Player(xPos, yPos) {
             this.inited = true;
         }
 
-        // push();
-        // translate(0, -this.position.y);
+        if(this.grounded && abs(this.motionAngle) < 1) {
+            push();
+            translate(this.position.x + this.baseWidth/2, this.position.y + this.baseHeight/2);
+            rotate(-PLAYER_VEL_ROT_RATIO * this.velocity.x);
+            imageMode(CENTER);
+            image(
+                this.baseCopy,
+                0, 0
+                // this.position.x,
+                // this.position.y - (3 * abs(sin(0.1*this.wheelAngle)))
+            );
+            pop();
 
-        // push();
-        // rotate(this.motionAngle);
+            push()
+            translate(
+                this.position.x + (0.08 * this.baseWidth) + this.wheelWidth / 2,
+                this.position.y + (0.58 * this.baseHeight) + this.wheelHeight / 2
+            );
+            rotate(this.wheelAngle);
+            image(
+                this.wheelCopy, -this.wheelWidth / 2, -this.wheelHeight / 2
+            );
+            pop();
 
+            push()
+            translate(
+                this.position.x + (0.27 * this.baseWidth) + this.wheelWidth / 2,
+                this.position.y + (0.58 * this.baseHeight) + this.wheelHeight / 2
+            );
+            rotate(this.wheelAngle);
+            image(
+                this.wheelCopy, -this.wheelWidth / 2, -this.wheelHeight / 2
+            );
+            pop();
 
-        push();
-        translate(this.position.x + this.baseWidth/2, this.position.y + this.baseHeight/2);
-        rotate(-PLAYER_VEL_ROT_RATIO * this.velocity.x + this.motionAngle);
-        imageMode(CENTER);
-        image(
-            this.baseCopy,
-            0, 0
-            // this.position.x,
-            // this.position.y - (3 * abs(sin(0.1*this.wheelAngle)))
-        );
-        pop();
+            push()
+            translate(
+                this.position.x + (0.46 * this.baseWidth) + this.wheelWidth / 2,
+                this.position.y + (0.58 * this.baseHeight) + this.wheelHeight / 2
+            );
+            rotate(this.wheelAngle);
+            image(
+                this.wheelCopy, -this.wheelWidth / 2, -this.wheelHeight / 2
+            );
+            pop();
 
-        push()
-        translate(
-            this.position.x + (0.08 * this.baseWidth) + this.wheelWidth / 2,
-            this.position.y + (0.58 * this.baseHeight) + this.wheelHeight / 2
-        );
-        rotate(this.wheelAngle);
-        image(
-            this.wheelCopy, -this.wheelWidth / 2, -this.wheelHeight / 2
-        );
-        pop();
+            push()
+            translate(
+                this.position.x + (0.65 * this.baseWidth) + this.wheelWidth / 2,
+                this.position.y + (0.58 * this.baseHeight) + this.wheelHeight / 2
+            );
+            rotate(this.wheelAngle);
+            image(
+                this.wheelCopy, -this.wheelWidth / 2, -this.wheelHeight / 2
+            );
+            pop();
+        }
+        else {
+            push();
+            translate(this.position.x + this.baseWidth/2, this.position.y + this.baseHeight/2);
+            rotate(-PLAYER_VEL_ROT_RATIO * this.velocity.x + this.motionAngle);
+            imageMode(CENTER);
+            image(
+                this.baseCopy,
+                0, 0
+                // this.position.x,
+                // this.position.y - (3 * abs(sin(0.1*this.wheelAngle)))
+            );
 
-        push()
-        translate(
-            this.position.x + (0.27 * this.baseWidth) + this.wheelWidth / 2,
-            this.position.y + (0.58 * this.baseHeight) + this.wheelHeight / 2
-        );
-        rotate(this.wheelAngle);
-        image(
-            this.wheelCopy, -this.wheelWidth / 2, -this.wheelHeight / 2
-        );
-        pop();
+            push();
+            translate(
+                (0.15 * this.baseWidth) + this.wheelWidth / 2,
+                (0.58 * this.baseHeight) - this.wheelHeight / 2
+            );
+            rotate(this.wheelAngle);
+            image(
+                this.wheelCopy, 0, 0
+            );
+            pop();
 
-        push()
-        translate(
-            this.position.x + (0.46 * this.baseWidth) + this.wheelWidth / 2,
-            this.position.y + (0.58 * this.baseHeight) + this.wheelHeight / 2
-        );
-        rotate(this.wheelAngle);
-        image(
-            this.wheelCopy, -this.wheelWidth / 2, -this.wheelHeight / 2
-        );
-        pop();
+            push();
+            translate(
+                (0.05 * this.baseWidth),
+                (0.58 * this.baseHeight) - this.wheelHeight / 2
+            );
+            rotate(this.wheelAngle);
+            image(
+                this.wheelCopy, 0, 0
+            );
+            pop();
 
-        push()
-        translate(
-            this.position.x + (0.65 * this.baseWidth) + this.wheelWidth / 2,
-            this.position.y + (0.58 * this.baseHeight) + this.wheelHeight / 2
-        );
-        rotate(this.wheelAngle);
-        image(
-            this.wheelCopy, -this.wheelWidth / 2, -this.wheelHeight / 2
-        );
-        pop();
+            push()
+            translate(
+                (-0.14 * this.baseWidth),
+                (0.58 * this.baseHeight) - this.wheelHeight / 2
+            );
+            rotate(this.wheelAngle);
+            image(
+                this.wheelCopy, 0, 0
+            );
+            pop();
 
-        //pop();
+            push()
+            translate(
+                (-0.33 * this.baseWidth),
+                (0.58 * this.baseHeight) - this.wheelHeight / 2
+            );
+            rotate(this.wheelAngle);
+            image(
+                this.wheelCopy, 0, 0
+            );
+            pop();
 
-        // pop();
+            pop();
+        }
 
         this.wheelAngle += 1;
     };

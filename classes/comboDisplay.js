@@ -28,23 +28,44 @@ function ComboDisplay() {
             yOffset: 0,
             sound: SuperKillSound
         },
-        killtacular: {
-            label: "KILL-TACULAR!",
-            count: 10,
-            drawn: false,
-            yOffset: 0,
-            sound: KillatacularSound
-        },
         ultraKill: {
-            label: "ULTRA KILL!!",
-            count: 15,
+            label: "ULTRA KILL!",
+            count: 12,
             drawn: false,
             yOffset: 0,
             sound: UltraKillSound
         },
+        monsterKill: {
+            label: "MONSTER KILL!",
+            count: 15,
+            drawn: false,
+            yOffset: 0,
+            sound: MonsterKillSound
+        },
+        killtacular: {
+            label: "KILL-TACULAR!!",
+            count: 25,
+            drawn: false,
+            yOffset: 0,
+            sound: KillatacularSound
+        },
+        killtastrophe: {
+            label: "KILL-TASTROPHE!!",
+            count: 35,
+            drawn: false,
+            yOffset: 0,
+            sound: KilltastropheSound
+        },
+        killionaire: {
+            label: "KILL-IONAIRE!!",
+            count: 50,
+            drawn: false,
+            yOffset: 0,
+            sound: KillionaireSound
+        },
         holyShit: {
             label: "HOLY SHIT!!!",
-            count: 20,
+            count: 75,
             drawn: false,
             yOffset: 0,
             sound: HolyShitSound

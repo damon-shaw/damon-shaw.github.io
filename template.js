@@ -15,6 +15,9 @@ let BomberFrame2;
 let BomberFrame3;
 let BomberFrame4;
 
+// Seeker Image Frames
+let SeekerFrame;
+
 // Sounds
 let DoubleKillSound;
 let QuadraKillSound;
@@ -44,11 +47,20 @@ function preload() {
     TankSpriteBase = loadImage("../assets/tank_base_alpha.png");
     TankSpriteWheel = loadImage("../assets/tank_wheel.png");
 
+    // Bomber NPC Sprite Frames
     BomberFrame0 = loadImage("../assets/bomber.png");
     BomberFrame1 = loadImage("../assets/bomber_1.png");
     BomberFrame2 = loadImage("../assets/bomber_2.png");
     BomberFrame3 = loadImage("../assets/bomber_3.png");
     BomberFrame4 = loadImage("../assets/bomber_4.png");
+    BomberShellBase = loadImage("../assets/bomber_shell.png");
+
+    // Seeker NPC Sprite Frames
+    SeekerFrame = loadImage("../assets/seeker.png");
+    SeekerShellFrame0 = loadImage("../assets/seeker_shell_0.png");
+    SeekerShellFrame1 = loadImage("../assets/seeker_shell_1.png");
+    SeekerShellFrame2 = loadImage("../assets/seeker_shell_2.png");
+    SeekerShellFrame3 = loadImage("../assets/seeker_shell_3.png");
 
     ExplosionFrame0 = loadImage("../assets/explosion_0.png");
     ExplosionFrame1 = loadImage("../assets/explosion_1.png");
@@ -58,8 +70,6 @@ function preload() {
     ExplosionFrame5 = loadImage("../assets/explosion_5.png");
     ExplosionFrame6 = loadImage("../assets/explosion_6.png");
     ExplosionFrame7 = loadImage("../assets/explosion_7.png");
-
-    BomberShellBase = loadImage("../assets/bomber_shell.png");
 
     // Load sound files.
     Explosion1 = loadSound("../assets/sounds/explosion1.mp3");
@@ -108,6 +118,10 @@ function setup() {
     BomberFrame3.resizeNN(BomberFrame3.width * bomberScale, BomberFrame3.height * bomberScale);
     BomberFrame4.resizeNN(BomberFrame4.width * bomberScale, BomberFrame4.height * bomberScale);
     BomberShellBase.resizeNN(BomberShellBase.width * bomberScale, BomberShellBase.height * bomberScale);
+
+    // Scale up the Seeker NPC's frames.
+    let seekerScale = 2;
+    SeekerFrame.resizeNN(SeekerFrame.width * seekerScale, SeekerFrame.height * seekerScale);
 
     ExplosionFrame0.resizeNN(ExplosionFrame0.width * 2, ExplosionFrame0.height * 2);
     ExplosionFrame1.resizeNN(ExplosionFrame1.width * 2, ExplosionFrame1.height * 2);
