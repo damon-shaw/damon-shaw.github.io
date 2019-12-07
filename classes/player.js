@@ -12,6 +12,7 @@ function Player(xPos, yPos) {
 
     this.wheelAngle = 0;
 
+    this.rotationRate = 0;
     this.motionAngle = 0;
 
     this.acceleration = createVector(0, 1);
@@ -58,12 +59,15 @@ function Player(xPos, yPos) {
         if(!this.grounded)
             this.velocity.add(this.gravityVector);
         this.position.add(this.velocity);
+        this.motionAngle += this.rotationRate;
 
         if(this.position.y > MAX_PLAYER_Y_POS) {
             this.position.y = MAX_PLAYER_Y_POS;
             this.grounded = true;
+            this.rotationRate = 0;
             if(this.velocity.y > 0) {
                 this.velocity.y = -0.5*this.velocity.y;
+                this.motionAngle = 0.7*this.motionAngle;
             }
         }
 
@@ -94,9 +98,13 @@ function Player(xPos, yPos) {
         // push();
         // translate(0, -this.position.y);
 
+        // push();
+        // rotate(this.motionAngle);
+
+
         push();
         translate(this.position.x + this.baseWidth/2, this.position.y + this.baseHeight/2);
-        rotate(-PLAYER_VEL_ROT_RATIO * this.velocity.x);
+        rotate(-PLAYER_VEL_ROT_RATIO * this.velocity.x + this.motionAngle);
         imageMode(CENTER);
         image(
             this.baseCopy,
@@ -150,6 +158,8 @@ function Player(xPos, yPos) {
         );
         pop();
 
+        //pop();
+
         // pop();
 
         this.wheelAngle += 1;
@@ -169,5 +179,6 @@ function Player(xPos, yPos) {
 
     this.launch = function() {
         this.launched = true;
+        this.rotationRate = random(-0.25, 0.25);
     }
 }

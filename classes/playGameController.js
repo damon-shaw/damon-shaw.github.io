@@ -43,6 +43,7 @@ function PlayGameControllerObj() {
         // Draw the backdrop.
         noStroke();
 
+        textFont(OceanRush);
         if(this.player.position.y < 100) {
             push();
             translate(0, -this.player.position.y + 100);
@@ -52,6 +53,7 @@ function PlayGameControllerObj() {
         else {
             this.comboDisplay.draw(40);
         }
+        textFont(ShareTechMono);
 
         // Draw the height meter.
         stroke(COLORS.fadedBlack);

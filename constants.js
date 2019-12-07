@@ -19,5 +19,11 @@ const W_KEY = 87;
 var GRAVITY_VECTOR;
 var SLOW_GRAVITY_VECTOR;
 
+// Combo Display Constants
+var COMBO_X_SHAKE = 1/8;
+var COMBO_Y_SHAKE = 1/10;
+var COMBO_X_FREQ = Math.PI / 2;
+var COMBO_Y_FREQ = Math.PI / 3;
+
 // Collider tool
 var Collider;

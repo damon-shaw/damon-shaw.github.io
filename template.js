@@ -1,14 +1,31 @@
 
 var ShareTechMono;
+var OceanRush;
+var RoyalFighter;
+var DoubleHomocide;
+var LadyRadical;
 
 let TankSpriteBase;
 let TankSpriteWheel;
 
+// Bomber Image Frames
 let BomberFrame0;
 let BomberFrame1;
 let BomberFrame2;
 let BomberFrame3;
 let BomberFrame4;
+
+// Sounds
+let DoubleKillSound;
+let QuadraKillSound;
+let SuperKillSound;
+let KillatacularSound;
+let KillionaireSound;
+let KilltastropheSound;
+let MonsterKillSound;
+let UltraKillSound;
+let HolyShitSound;
+let YeetSound;
 
 let gameState = "pregame";
 
@@ -19,6 +36,10 @@ function preload() {
     soundFormats('mp3', 'ogg');
 
     ShareTechMono = loadFont('../assets/fonts/ShareTechMono-Regular.ttf');
+    OceanRush = loadFont("../assets/fonts/OceanRush.otf");
+    RoyalFighter = loadFont("../assets/fonts/RoyalFighter.otf");
+    //DoubleHomocide = loadFont("../assets/fonts/DoubleHomocide.ttf");
+    LadyRadical = loadFont("../assets/fonts/LadyRadical.ttf");
     
     TankSpriteBase = loadImage("../assets/tank_base_alpha.png");
     TankSpriteWheel = loadImage("../assets/tank_wheel.png");
@@ -44,6 +65,17 @@ function preload() {
     Explosion1 = loadSound("../assets/sounds/explosion1.mp3");
     Explosion2 = loadSound("../assets/sounds/explosion2.mp3");
     Explosion3 = loadSound("../assets/sounds/explosion3.mp3");
+
+    DoubleKillSound = loadSound("../assets/sounds/doubleKill.wav");
+    QuadraKillSound = loadSound("../assets/sounds/quadraKill.wav");
+    SuperKillSound = loadSound("../assets/sounds/superKill.wav");
+    KillatacularSound = loadSound("../assets/sounds/killtacular.wav");
+    KillionaireSound = loadSound("../assets/sounds/killionaire.wav");
+    KilltastropheSound = loadSound("../assets/sounds/killtastrophe.wav");
+    MonsterKillSound = loadSound("../assets/sounds/monsterKill.wav");
+    UltraKillSound = loadSound("../assets/sounds/ultraKill.wav");
+    HolyShitSound = loadSound("../assets/sounds/holyShit.wav");
+    YeetSound = loadSound("../assets/sounds/420yeet.wav");
 
     // Non `const` constant definitions.
     Collider = new ColliderTool();
