@@ -14,6 +14,7 @@ function PlayGameControllerObj() {
 
         // Create the player and NPC containers.
         this.player = new Player(200, 350);
+        this.highestAltitude = height;
         this.bombers = [];
         this.seekers = [];
 
@@ -61,6 +62,12 @@ function PlayGameControllerObj() {
         for(var i = 0; i >= -HEIGHT_METER_LENGTH; i = i - HEIGHT_METER_INTERVAL) {
             line(10, i+height, 30, i+height);
         }
+
+        // Draw the highest altitude reached tick mark.
+        stroke(COLORS.scarletRed);
+        line(20, this.highestAltitude, 45, this.highestAltitude);
+        if(this.player.position.y < this.highestAltitude)
+            this.highestAltitude = this.player.position.y;
 
         noStroke();
         fill(COLORS.fadedBlack);
