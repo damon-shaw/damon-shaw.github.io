@@ -8,7 +8,7 @@ function ProgressDisplay() {
     this.delta = 0;
     this.currentProgress = 0;
     this.smoothProgress = 0;
-    this.maxProgress = 8;
+    this.maxProgress = 7;
 
     this.transitionRemainingFrames = 60;
 
