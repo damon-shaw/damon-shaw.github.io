@@ -1,4 +1,19 @@
 PROGRESS UPDATES:
+    December 7th, 2019:
+        This update includes the remainder of the gameplay for the final
+        project submission. There's far too many additions to go into detail
+        for each one, so I'll just include a list:
+        * New NPC: Seeker; shells chase player
+        * Added combo meter 
+        * Added fuel as a lose vector; added fuel gauge
+        * Added fuel refill cost display
+        * Added money as a win vector; added money display
+        * Added progress display; progress is measured in completed refills
+        * Added win screen
+        * Added lose screen
+        * Updated How To Play screen to include screenshots from game
+        * Added rotation of player character while in air
+
     November 16th, 2019:
         Since the original submission, I've done quite a lot with my game.
         I redid my terrain code to use the P5JS noise() function, which
