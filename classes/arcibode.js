@@ -11,7 +11,7 @@ function Arcibode(xLine) {
      * Draws the tank sprite.
      */
     this.draw = function() {
-        console.log(ArcibodeFrames);
+        //console.log(ArcibodeFrames);
 
         let scale = Math.trunc((100 - abs(this.position.z)) / 5);
         imageMode(CENTER);
