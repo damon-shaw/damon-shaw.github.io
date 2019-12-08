@@ -1,3 +1,10 @@
+*********************************************************************
+* TO RUN THIS CODE:                                                 *
+*     - YOU MUST HAVE NODE.JS INSTALLED                             *
+*     - OPEN A TERMINAL IN THIS DIRECTORY AND RUN `npm install`     *
+*     - RUN `node liveserver.js`                                    *
+*********************************************************************
+
 PROGRESS UPDATES:
     December 7th, 2019:
         This update includes the remainder of the gameplay for the final
@@ -80,10 +87,4 @@ DOCUMENTATION:
     are smooth. The sky also has moving clouds that coincide with the
     direction of the player's motion. The player tank has suspension that's
     bouncing up and down with the motion, and all four of its wheels spin.
-    The enemy helicopters have spinner propellers.
-
-
-TO RUN THIS CODE:
-    - YOU MUST HAVE NODE.JS INSTALLED
-    - OPEN A TERMINAL IN THIS DIRECTORY AND RUN `npm install`
-    - RUN `node liveserver.js`
+    The enemy helicopters have spinner propellers.v
