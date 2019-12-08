@@ -351,6 +351,10 @@ function PlayGameControllerObj() {
             }
         }
 
+        if(this.progressDisplay.complete()) {
+            this.state = "win";
+        }
+
         if(keyIsDown(SPACE_KEY)) {
             if(!this.spacePressed) {
                 this.spacePressed = true;

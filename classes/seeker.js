@@ -20,7 +20,7 @@ function Seeker(yLine) {
     this.execute = function() {
         // Randomly decide if a shell should be dropped.
         if(random() < this.dropShellProb && !this.isOutOfFrame()) {
-            console.log("Dropping a seeker shell!");
+            // console.log("Dropping a seeker shell!");
             this.shells.push(
                 new SeekerShell(
                     this.position.x + this.width / 2,

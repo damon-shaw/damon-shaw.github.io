@@ -45,7 +45,7 @@ function Bomber(yLine) {
     this.execute = function() {
         // Randomly decide if a shell should be dropped.
         if(random() < this.dropShellProb) {
-            console.log("Dropping a shell!");
+            // console.log("Dropping a shell!");
             this.shells.push(
                 new BomberShell(
                     this.position.x + this.width / 2,

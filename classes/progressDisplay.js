@@ -20,8 +20,6 @@ function ProgressDisplay() {
         fill(COLORS.evilGrey);
         rect(this.position.x, this.position.y, this.width, this.height);
 
-        console.log(this.currentProgress);
-
         if(this.smoothProgress < this.currentProgress) {
             if(this.delta === 0) {
                 this.delta = this.currentProgress - this.smoothProgress;
@@ -50,6 +48,10 @@ function ProgressDisplay() {
 
     this.incrementProgress = function() {
         this.currentProgress++;
+    }
+
+    this.complete = function() {
+        return this.currentProgress === this.maxProgress;
     }
 
 

@@ -29,6 +29,7 @@ let SkullFrame;
 let MargaritaFrame;
 
 // Sounds
+let GoodLuckSound;
 let DoubleKillSound;
 let QuadraKillSound;
 let SuperKillSound;
@@ -101,6 +102,7 @@ function preload() {
     Explosion2 = loadSound("../assets/sounds/explosion2.mp3");
     Explosion3 = loadSound("../assets/sounds/explosion3.mp3");
 
+    GoodLuckSound = loadSound("../assets/sounds/goodLuck.wav");
     DoubleKillSound = loadSound("../assets/sounds/doubleKill.wav");
     QuadraKillSound = loadSound("../assets/sounds/quadraKill.wav");
     SuperKillSound = loadSound("../assets/sounds/superKill.wav");
@@ -182,6 +184,7 @@ function draw() {
 
             if(preGameController.shouldTransitionToGame()) {
                 playGameController.reset();
+                GoodLuckSound.play();
                 gameState = "game";
             }
         break;

@@ -29,6 +29,10 @@ function PreGameObj() {
             new BomberSprite(40)
         ];
 
+        this.seekers = [
+            new Seeker()
+        ];
+
         this.explosions = [
             // new ExplosionAnimation(100, 100)
         ];
@@ -69,6 +73,9 @@ function PreGameObj() {
         if(random() < 0.005) {
             this.bombers.push(new BomberSprite(random(100, 250)));
         }
+        if(random() < 0.005) {
+            this.seekers.push(new Seeker());
+        }
 
         this.bombers.forEach((bomber, index) => {
             if(bomber.isOutOfFrame())
@@ -87,9 +94,43 @@ function PreGameObj() {
             })
         });
 
+        this.seekers.forEach((seeker, seekerIdx) => {
+
+            seeker.shells.forEach((shell, index) => {
+                if(Collider.areColliding(this.myTank, shell)) {
+                    console.log("Player is colliding with a seeker shell!");
+                    this.explosions.push(
+                        new ExplosionAnimation(
+                            (this.myTank.getMidpoint().x + shell.getMidpoint().x) / 2,
+                            (this.myTank.getMidpoint().y + shell.getMidpoint().y) / 2
+                        )
+                    );
+                    seeker.shells.splice(index, 1);
+                }
+            });
+
+
+            seeker.shells.forEach((shell, index) => {
+                if(shell.isDone()) {
+                    this.explosions.push(
+                        new ExplosionAnimation(
+                            shell.position.x,
+                            shell.position.y
+                        )
+                    );
+                    seeker.shells.splice(index, 1);
+                }
+            });
+
+            if(seeker.isOutOfFrame() && seeker.shells.length === 0) {
+                this.seekers.splice(seekerIdx, 1);
+            }
+
+        });
+
         this.explosions.forEach((explosion, index) => {
             if(explosion.isDone()) {
-                this.explosions.splice(1, index);
+                this.explosions.splice(index, 1);
             }
         });
         
@@ -104,6 +145,17 @@ function PreGameObj() {
             bomber.execute();
 
             bomber.shells.forEach(shell => shell.move());
+        });
+
+        this.seekers.forEach(seeker => {
+            seeker.move();
+            seeker.execute();
+            seeker.shells.forEach(shell => {
+                shell.move(
+                    this.myTank.x + (this.myTank.baseWidth / 2),
+                    this.myTank.y + (this.myTank.baseHeight / 2)
+                );
+            });
         });
 
     }
@@ -138,6 +190,11 @@ function PreGameObj() {
         this.bombers.forEach(bomber => {
             bomber.draw();
             bomber.shells.forEach(shell => shell.draw());
+        });
+
+        this.seekers.forEach(seeker => {
+            seeker.draw();
+            seeker.shells.forEach(shell => shell.draw());
         });
 
         this.explosions.forEach(explosion => {

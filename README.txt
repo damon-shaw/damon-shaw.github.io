@@ -13,6 +13,18 @@ PROGRESS UPDATES:
         * Added lose screen
         * Updated How To Play screen to include screenshots from game
         * Added rotation of player character while in air
+        * Added sound effects
+            * Good Luck (game start)
+            * Double Kill (2 kill combo)
+            * Quadra Kill (4 kill combo)
+            * Super Kill (8 kill combo)
+            * Ultra Kill (12 kill combo)
+            * Monster Kill (15 kill combo)
+            * Kill-tacular (25 kill combo)
+            * Kill-tastrophe (35 kill combo)
+            * Kill-ionaire (50 kill combo)
+            * Holy Shit! (75 kill combo)
+            * Cha-Ching (fuel-up successful)
 
     November 16th, 2019:
         Since the original submission, I've done quite a lot with my game.

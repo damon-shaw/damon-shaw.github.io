@@ -93,4 +93,11 @@ function TankSprite(xPos, yPos) {
         };
     }
 
+    this.getMidpoint = function() {
+        return createVector(
+            this.x + (this.baseWidth / 2),
+            this.y + (this.baseHeight / 2)
+        );
+    }
+
 }
