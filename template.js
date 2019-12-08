@@ -62,9 +62,9 @@ function preload() {
     TankSpriteBase = loadImage("../assets/tank_base_alpha.png");
     TankSpriteWheel = loadImage("../assets/tank_wheel.png");
 
-    HowToFuel = loadImage("../assets/howto_fuel.png");
-    HowToMoney = loadImage("../assets/howto_money.png");
-    HowToCombo = loadImage("../assets/howto_combo.png");
+    HowToFuel = loadImage("../assets/howto_fuel.PNG");
+    HowToMoney = loadImage("../assets/howto_money.PNG");
+    HowToCombo = loadImage("../assets/howto_combo.PNG");
 
     // Bomber NPC Sprite Frames
     BomberFrame0 = loadImage("../assets/bomber.png");
