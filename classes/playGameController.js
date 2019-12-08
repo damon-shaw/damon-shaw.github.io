@@ -11,7 +11,6 @@ function PlayGameControllerObj() {
         this.state = "play";
         this.inited = false;
         this.transitionToStart = false;
-        this.transitionToGameOver = false;
 
         // Create the player and NPC containers.
         this.player = new Player(200, 350);
@@ -64,6 +63,7 @@ function PlayGameControllerObj() {
         }
 
         noStroke();
+        fill(COLORS.fadedBlack);
         // Draw the labels for each height meter tick mark.
         for(var i = 0; i >= -HEIGHT_METER_LENGTH; i = i - HEIGHT_METER_INTERVAL) {
             text((-i).toString(), 20, i+height-5);
@@ -112,6 +112,46 @@ function PlayGameControllerObj() {
         this.gameOverExplosions.forEach(explosion => {
             explosion.draw();
         });
+
+        if(this.player.position.x < -this.player.baseWidth - 10) {
+            fill(0, 0, 0);
+            rect(0, 0, width, height);
+
+            imageMode(CENTER);
+            image(SkullFrame, width/2, height/2);
+            imageMode(CORNER);
+
+            textSize(60);
+            fill(COLORS.bloodRed);
+            textFont(RoyalFighter);
+            text("You have died!", width/4, 70);
+
+            textFont(ShareTechMono);
+            textSize(30);
+            text("Click the skull to try again.", width/5, 340);
+        }
+    }
+
+    this.drawGameWin = function() {
+        if(this.player.position.x > width + this.player.baseWidth + 10) {
+            textSize(60);
+            fill(COLORS.laserGreen);
+            textFont(RoyalFighter);
+            text("You have escaped!", width/5, 125);
+
+            textSize(30);
+            fill(COLORS.scarletRed);
+            textFont(ShareTechMono);
+            text("You outran the military and made it to Mexico!", width/23, 200);
+            
+            imageMode(CENTER);
+            image(MargaritaFrame, width/2, 4*height/5);
+            imageMode(CORNER);
+
+            text("Click the margarita to play again!", width/6, 240);
+
+
+        }
     }
 
     this.draw = function() {
@@ -126,6 +166,10 @@ function PlayGameControllerObj() {
             case "lose":
                 this.drawGame();
                 this.drawGameOver();
+            break;
+            case "win":
+                this.drawGame();
+                this.drawGameWin();
             break;
         }
     }
@@ -357,7 +401,45 @@ function PlayGameControllerObj() {
         // Do not process collisions.
 
         if(this.player.position.x < -this.player.baseWidth - 10) {
-            this.transitionToGameOver = true;
+            if(mouseIsPressed) {
+                console.log(`X: ${mouseX} Y: ${mouseY}`);
+                if(mouseX > 275 && mouseX < 525) {
+                    if(mouseY > 125 && mouseY < 275) {
+                        console.log("Should transition to start!");
+                        this.transitionToStart = true;
+                    }
+                }
+            }
+        }
+    }
+
+    this.executeGameWin = function() {
+        // Move all the NPCs, but don't allow them to drop new shells.
+        this.bombers.forEach(bomber => {
+            bomber.move();
+            bomber.shells.forEach(shell => shell.move());
+        });
+        this.seekers.forEach(seeker => {
+            seeker.move();
+            seeker.shells.forEach(shell => {
+                shell.move(
+                    this.player.position.x + (this.player.baseWidth / 2),
+                    this.player.position.y + (this.player.baseHeight / 2)
+                );
+            });
+        });
+
+        this.player.noInputMove();
+        this.player.position.x += 2;
+
+        if(this.player.position.x > width + this.player.baseWidth + 10) {
+            if(mouseIsPressed) {
+                if(mouseX > width/3 && mouseX < 2*width/3) {
+                    if(mouseY > height/2 && mouseY < height) {
+                        this.transitionToStart = true;
+                    }
+                }
+            }
         }
     }
 
@@ -371,6 +453,9 @@ function PlayGameControllerObj() {
             break;
             case "lose":
                 this.executeGameOver();
+            break;
+            case "win":
+                this.executeGameWin();
             break;
         }
     }

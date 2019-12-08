@@ -8,6 +8,11 @@ var LadyRadical;
 let TankSpriteBase;
 let TankSpriteWheel;
 
+// How-To Images
+let HowToFuel;
+let HowToMoney;
+let HowToCombo;
+
 // Bomber Image Frames
 let BomberFrame0;
 let BomberFrame1;
@@ -20,6 +25,8 @@ let SeekerFrame;
 
 // Fuel Can Image Frames
 let FuelCanFrame;
+let SkullFrame;
+let MargaritaFrame;
 
 // Sounds
 let DoubleKillSound;
@@ -55,6 +62,10 @@ function preload() {
     TankSpriteBase = loadImage("../assets/tank_base_alpha.png");
     TankSpriteWheel = loadImage("../assets/tank_wheel.png");
 
+    HowToFuel = loadImage("../assets/howto_fuel.png");
+    HowToMoney = loadImage("../assets/howto_money.png");
+    HowToCombo = loadImage("../assets/howto_combo.png");
+
     // Bomber NPC Sprite Frames
     BomberFrame0 = loadImage("../assets/bomber.png");
     BomberFrame1 = loadImage("../assets/bomber_1.png");
@@ -72,6 +83,9 @@ function preload() {
 
     // Fuel Can Frames
     FuelCanFrame = loadImage("../assets/fuel_can.png");
+
+    SkullFrame = loadImage("../assets/skull.png");
+    MargaritaFrame = loadImage("../assets/margarita.png");
 
     ExplosionFrame0 = loadImage("../assets/explosion_0.png");
     ExplosionFrame1 = loadImage("../assets/explosion_1.png");
@@ -122,6 +136,9 @@ function setup() {
     TankSpriteBase.resizeNN(TankSpriteBase.width * tankScale, TankSpriteBase.height * tankScale);
     TankSpriteWheel.resizeNN(TankSpriteWheel.width * tankScale, TankSpriteWheel.height * tankScale);
 
+    HowToFuel.resize(HowToFuel.width * 0.8, HowToFuel.height * 0.8);
+    HowToCombo.resize(HowToCombo.width * 0.9, HowToCombo.height * 0.9);
+
     // Scale up the Bomber NPC's frames.
     let bomberScale = 2;
     BomberFrame0.resizeNN(BomberFrame0.width * bomberScale, BomberFrame0.height * bomberScale);
@@ -136,6 +153,8 @@ function setup() {
     SeekerFrame.resizeNN(SeekerFrame.width * seekerScale, SeekerFrame.height * seekerScale);
 
     FuelCanFrame.resizeNN(FuelCanFrame.width * 0.8, FuelCanFrame.height * 0.8);
+    SkullFrame.resizeNN(SkullFrame.width * 0.3, SkullFrame.height * 0.3);
+    MargaritaFrame.resizeNN(MargaritaFrame.width * 7, MargaritaFrame.height * 7);
 
     ExplosionFrame0.resizeNN(ExplosionFrame0.width * 2, ExplosionFrame0.height * 2);
     ExplosionFrame1.resizeNN(ExplosionFrame1.width * 2, ExplosionFrame1.height * 2);

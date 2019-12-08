@@ -5,6 +5,7 @@ function PreGameObj() {
     this.transitionToGame = false;
 
     this.init = function() {
+        this.transitionToGame = false;
         this.myTank = new TankSprite(50, 340);
 
         this.playSelector = new TankWheelSprite(220, 150, 4);
@@ -32,6 +33,10 @@ function PreGameObj() {
             // new ExplosionAnimation(100, 100)
         ];
     };
+
+    this.reset = function() {
+        this.init();
+    }
 
     this.draw = function() {
 
@@ -196,16 +201,48 @@ function PreGameObj() {
 
         noStroke();
         textSize(25);
-        text("Use the arrow keys to", 50, 100);
-        text("move left and right.", 50, 130);
+        text("Use the W-A-D keys to", 50, 100);
+        text("move sideways or jump.", 50, 130);
         text("Hit the bombs to launch", 50, 160);
-        text("into the air to hit the", 50, 190);
-        text("enemies and gain money", 50, 220);
+        text("into the air; hit the", 50, 190);
+        text("enemies to gain money", 50, 220);
         text("You'll need to fuel up", 50, 250);
         text("soon; don't run out of", 50, 280);
         text("money or get caught!", 50, 310);
 
         text("RETURN", 240, 350);
+
+        fill(COLORS.translucentWhite);
+        rect(400, 30, 340, 340);
+
+        image(HowToFuel, 540, 50);
+        image(HowToMoney, 410, 190);
+        image(HowToCombo, 550, 270);
+
+        fill(COLORS.evilGrey);
+        textSize(15);
+        text("Your fuel gauge", 410, 70);
+        text("shows how much", 410, 85);
+        text("fuel is left.", 410, 100);
+        text("It also shows", 410, 125);
+        text("the price of", 410, 140);
+        text("the next fill-", 410, 155);
+        text("up.", 410, 170);
+
+        text("Your money meter shows", 530, 180);
+        text("the money you currently", 530, 195);
+        text("have. It also shows the", 530, 210);
+        text("amount you receive for", 530, 225);
+        text("each kill the amount you", 530, 240);
+        text("lose for each fill-up.", 530, 255);
+
+        text("Your combo meter", 410, 275);
+        text("shows how many", 410, 290);
+        text("successive kills", 410, 305);
+        text("you have. Combo", 410, 320);
+        text("score increases", 410, 335);
+        text("the value of each", 410, 350);
+        text("kill.", 410, 365);
 
         // If the player is hovering over a wheel menu item selector, spin it.
         let selectors = [this.toStartSelector];
