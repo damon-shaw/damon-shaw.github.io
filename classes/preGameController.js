@@ -36,6 +36,8 @@ function PreGameObj() {
         this.explosions = [
             // new ExplosionAnimation(100, 100)
         ];
+
+        this.arcibode = new Arcibode(100);
     };
 
     this.reset = function() {
@@ -70,6 +72,8 @@ function PreGameObj() {
     };
 
     this.execute = function() {
+        //this.arcibode.move();
+
         if(random() < 0.005) {
             this.bombers.push(new BomberSprite(random(100, 250)));
         }
@@ -158,6 +162,8 @@ function PreGameObj() {
             });
         });
 
+        this.arcibode.move();
+
     }
 
     this.drawBackdrop = function() {
@@ -200,6 +206,8 @@ function PreGameObj() {
         this.explosions.forEach(explosion => {
             explosion.draw();
         });
+
+        this.arcibode.draw();
     }
 
     this.drawStart = function() {

@@ -23,6 +23,26 @@ let BomberFrame4;
 // Seeker Image Frames
 let SeekerFrame;
 
+// Arcibode Image Frames
+let ArcibodeFrame0;
+let ArcibodeFrame1;
+let ArcibodeFrame2;
+let ArcibodeFrame3;
+let ArcibodeFrame4;
+let ArcibodeFrame5;
+let ArcibodeFrame6;
+let ArcibodeFrame7;
+let ArcibodeFrames = {
+    zero: [],
+    one: [],
+    two: [],
+    three: [],
+    four: [],
+    five: [],
+    six: [],
+    seven: []
+};
+
 // Fuel Can Image Frames
 let FuelCanFrame;
 let SkullFrame;
@@ -81,6 +101,26 @@ function preload() {
     SeekerShellFrame1 = loadImage("../assets/seeker_shell_1.png");
     SeekerShellFrame2 = loadImage("../assets/seeker_shell_2.png");
     SeekerShellFrame3 = loadImage("../assets/seeker_shell_3.png");
+
+    // Arcibode NPC Sprite Frames
+    ArcibodeFrame0 = loadImage("../assets/arcibode_0.png");
+    ArcibodeFrame1 = loadImage("../assets/arcibode_1.png");
+    ArcibodeFrame2 = loadImage("../assets/arcibode_2.png");
+    ArcibodeFrame3 = loadImage("../assets/arcibode_3.png");
+    ArcibodeFrame4 = loadImage("../assets/arcibode_4.png");
+    ArcibodeFrame5 = loadImage("../assets/arcibode_5.png");
+    ArcibodeFrame6 = loadImage("../assets/arcibode_6.png");
+    ArcibodeFrame7 = loadImage("../assets/arcibode_7.png");
+    for(let i = 1; i <= 20; i++) {
+        ArcibodeFrames.zero.push(loadImage("../assets/arcibode_0.png"));
+        ArcibodeFrames.one.push(loadImage("../assets/arcibode_1.png"));
+        ArcibodeFrames.two.push(loadImage("../assets/arcibode_2.png"));
+        ArcibodeFrames.three.push(loadImage("../assets/arcibode_3.png"));
+        ArcibodeFrames.four.push(loadImage("../assets/arcibode_4.png"));
+        ArcibodeFrames.five.push(loadImage("../assets/arcibode_5.png"));
+        ArcibodeFrames.six.push(loadImage("../assets/arcibode_6.png"));
+        ArcibodeFrames.seven.push(loadImage("../assets/arcibode_7.png"));
+    }
 
     // Fuel Can Frames
     FuelCanFrame = loadImage("../assets/fuel_can.png");
@@ -153,6 +193,12 @@ function setup() {
     // Scale up the Seeker NPC's frames.
     let seekerScale = 2;
     SeekerFrame.resizeNN(SeekerFrame.width * seekerScale, SeekerFrame.height * seekerScale);
+
+    Object.values(ArcibodeFrames).forEach(frameSet => {
+        frameSet.forEach((frame, idx) => {
+            frame.resizeNN((frame.width * idx / 20) + 1, (frame.height * idx / 20) + 1);
+        });
+    })
 
     FuelCanFrame.resizeNN(FuelCanFrame.width * 0.8, FuelCanFrame.height * 0.8);
     SkullFrame.resizeNN(SkullFrame.width * 0.3, SkullFrame.height * 0.3);

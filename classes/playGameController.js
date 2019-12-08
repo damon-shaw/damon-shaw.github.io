@@ -229,9 +229,10 @@ function PlayGameControllerObj() {
                     )
                 );
 
+                console.log(COMBO_MODIFIER(this.comboDisplay.getCombo()));
                 this.comboDisplay.incrementCombo();
                 this.moneyDisplay.addMoney(
-                    VALUE_BOMBER * COMBO_MODIFIER(this.comboDisplay.getCombo())
+                    Math.trunc(VALUE_BOMBER * COMBO_MODIFIER(this.comboDisplay.getCombo()))
                 );
 
                 this.player.launch();
@@ -270,7 +271,7 @@ function PlayGameControllerObj() {
                 );
                 this.comboDisplay.incrementCombo();
                 this.moneyDisplay.addMoney(
-                    VALUE_SEEKER * COMBO_MODIFIER(this.comboDisplay.getCombo())
+                    Math.trunc(VALUE_SEEKER * COMBO_MODIFIER(this.comboDisplay.getCombo()))
                 );
                 this.player.launch();
                 this.playRandomExplosion();
