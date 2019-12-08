@@ -13,7 +13,7 @@ function Arcibode(xLine) {
     this.draw = function() {
         console.log(ArcibodeFrames);
 
-        let scale = Math.trunc((100 - this.position.z) / 5);
+        let scale = Math.trunc((100 - abs(this.position.z)) / 5);
         imageMode(CENTER);
         //console.log(scale);
         switch(this.frame) {
@@ -55,10 +55,15 @@ function Arcibode(xLine) {
     }
 
     this.move = function() {
-        this.position.y += 0.4;
-        this.position.z -= 0.8;
-
-        if(this.position.z <= 0) this.position.z = 1;
+        if(this.position.z > 0) {
+            this.position.z -= 0.8;
+            this.position.y += 0.4;
+        }
+        else {
+            this.position.z -= 0.2;
+            this.position.y += 0.8;
+            if(this.position.z <= -100) this.position.z = -100;
+        }
     };
 
     this.getBombs = function() {
